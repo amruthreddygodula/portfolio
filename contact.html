@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet"> <!-- Include Remix Icon library -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">AMRUTH REDDY</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="education.html">Education</a></li>
+          <li><a href="project.html">Projects</a></li>
+          <li><a href="certification.html">Certifications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="section__container">
+        <div class="contact__info">
+          <h2 class="section__title">Contact Me</h2>
+          <p class="contact__description">
+            Please do not hesitate to contact me via email or through my social media channels. Alternatively, you may use the form provided below to send me a message.
+          </p>
+          
+          <div class="social__links">
+            <a href="https://github.com/amruthreddygodula" target="_blank" class="social__link"><i class="ri-github-fill"></i></a>
+            <a href="https://www.snapchat.com/add/amruth_reddy018" target="_blank" class="social__link"><i class="ri-snapchat-fill"></i></a>
+            <a href="https://www.linkedin.com/in/amruth-reddy-415b1a256/" target="_blank" class="social__link"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://www.instagram.com/amruth.reddy_/" target="_blank"  class="social__link"><i class="ri-instagram-fill"></i></a>
+          </div>
+          
+          <form id="contactForm" class="contact__form">
+            <div class="form__group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form__group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form__group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit__btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Initialize EmailJS with your user ID
+    emailjs.init("LrW32Fc1v2ww2XeTA");
+
+    // Function to send email when form is submitted
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      // Send email using EmailJS
+      emailjs.sendForm('service_f1smwpf', 'template_lcrebjb', this)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Your message has been sent successfully!');
+          document.getElementById('contactForm').reset(); // Clear the form
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('There was an error sending your message.');
+        });
+    });
+  </script>
+</body>
+</html>
